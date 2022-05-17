@@ -1,6 +1,6 @@
-# obsninja-linkgen
+# VDO.Ninja-linkgen
 
-Wizard style interface for generating invite links for the [obs.ninja](https://obs.ninja) website.
+Wizard style interface for generating invite links for the [vdo.ninja](https://vdo.ninja) website.
 
 # add more questions
 there's a json file for that. Tweak `data.json` to your heart's desire.
