@@ -1,21 +1,22 @@
 :root {
-    --background-color: #0A0F1F; /* پس‌زمینه تیره با ته‌مای آبی عمیق سایبری */
-    --container-color: #1A2338; /* رنگ کانتینر با حس فلزی و مدرن */
-    --button-color: #2E3A59; /* دکمه‌های تیره با حس تکنولوژیک */
-    --neon-blue: #00D4FF; /* آبی نئونی برای اکسنت‌های سایبری */
-    --neon-purple: #7B00FF; /* بنفش نئونی برای جادوی سایبری */
-    --neon-green: #00FF85; /* سبز نئونی برای افکت‌های درخشان */
-    --neon-pink: #FF007A; /* صورتی نئونی برای جذابیت بصری */
+    --background-color: #0A0F1F;
+    --container-color: #1A2338;
+    --button-color: #2E3A59;
+    --neon-blue: #00D4FF;
+    --neon-purple: #7B00FF;
+    --neon-green: #00FF85;
+    --neon-pink: #FF007A;
     --regular-margin: 10px;
-    --glow-shadow: 0 0 15px rgba(0, 212, 255, 0.5); /* سایه درخشان نئونی */
+    --glow-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
 }
 
 body {
-    background: linear-gradient(135deg, var(--background-color), #1C2526); /* گرادیان سایبری */
+    background: linear-gradient(135deg, var(--background-color), #1C2526);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Orbitron', sans-serif; /* فونت تکنولوژیک */
+    font-family: 'Vazir', 'IranSans', 'Tahoma', sans-serif; /* فونت‌های مناسب فارسی */
+    direction: rtl; /* تنظیم جهت‌گیری راست به چپ */
     overflow: hidden;
 }
 
@@ -23,6 +24,7 @@ h1 {
     color: var(--neon-blue);
     display: block;
     text-shadow: var(--glow-shadow);
+    text-align: right; /* راست‌چین کردن عنوان */
 }
 
 input {
@@ -36,7 +38,7 @@ input[type="radio"] {
 #link {
     background: var(--container-color);
     padding: 10px;
-    text-align: center;
+    text-align: right; /* راست‌چین کردن متن */
     border: 2px solid var(--neon-green);
     border-radius: 8px;
     box-shadow: var(--glow-shadow);
@@ -80,7 +82,7 @@ input[type="radio"] {
 #step #stepNumber {
     position: absolute;
     top: -35px;
-    right: -20px;
+    left: -20px; /* تغییر به سمت چپ برای سازگاری با RTL */
     width: 40px;
     height: 40px;
     background: var(--neon-green);
@@ -95,13 +97,15 @@ input[type="radio"] {
 #step #stepDescription {
     font-weight: normal;
     width: 80%;
-    color: #C0CAF5; /* رنگ روشن‌تر برای خوانایی */
+    color: #C0CAF5;
+    text-align: right; /* راست‌چین کردن توضیحات */
 }
 
 #step #stepTitle {
     font-size: 2em;
     margin-bottom: 1em;
     text-shadow: 0 0 10px var(--neon-blue);
+    text-align: right; /* راست‌چین کردن عنوان */
 }
 
 #step #stepAnswers {
@@ -135,13 +139,14 @@ input[type="radio"] {
     padding: 4px;
     color: var(--neon-blue);
     border-radius: 4px;
+    direction: rtl; /* راست‌چین کردن ورودی‌ها */
 }
 
 #link h1 {
     text-transform: uppercase;
     font-size: 1.5em;
-    text-align: left;
-    margin-left: 10px;
+    text-align: right; /* راست‌چین کردن */
+    margin-right: 10px; /* تغییر margin برای سازگاری با RTL */
     text-shadow: 0 0 8px var(--neon-blue);
 }
 
@@ -157,6 +162,7 @@ input[type="radio"] {
 #link p {
     color: var(--neon-blue);
     text-shadow: 0 0 5px var(--neon-blue);
+    text-align: right; /* راست‌چین کردن پاراگراف */
 }
 
 #progressAndLink {
@@ -193,6 +199,8 @@ input[type="radio"] {
     margin: 0;
     padding: 0;
     text-shadow: 0 0 5px var(--neon-blue);
+    direction: ltr; /* URL باید چپ به راست باشد */
+    text-align: left; /* URL باید چپ‌چین باشد */
 }
 
 @keyframes pulse {
@@ -221,7 +229,7 @@ input[type="radio"] {
     }
 
     #step #stepNumber {
-        right: calc(50% - 20px);
+        left: calc(50% - 20px); /* تغییر به سمت چپ برای سازگاری با RTL */
         top: 0;
         box-shadow: 0 0 12px var(--neon-green);
     }
