@@ -1,5 +1,6 @@
 :root {
     --background-color: #0B132B; /* پس‌زمینه تیره با حس فضایی */
+    --background-color2: #371559; /* پس‌زمینه تیره با حس فضایی گرادینت*/
     --container-color: #1A2338; /* رنگ کانتینر با ته‌رنگ متالیک */
     --button-color: #2A3B4F; /* دکمه با حس تکنولوژی پیشرفته */
     --neon-blue: #00E5FF; /* آبی الکتریکی نئونی */
@@ -13,7 +14,7 @@
 }
 
 body {
-    background: linear-gradient(135deg, var(--background-color), #1C2526 70%, var(--neon-blue) 100%);
+    background: radial-gradient(135deg, var(--background-color), #1a2338 70%, var(--background-color2) 100%);
     display: flex;
     align-items: center;
     justify-content: center;
