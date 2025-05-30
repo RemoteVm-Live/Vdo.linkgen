@@ -1,189 +1,189 @@
 [
-    
     {
-        "title": "What do you want to share?",
+        "title": "چه چیزی می‌خواهید به اشتراک بگذارید؟",
         "description": "",
         "answers": [
             {
-                "label": "Webcam",
+                "label": "وب‌کم",
                 "type": "button",
                 "params": "?webcam"
             },
             {
-                "label": "Screen",
+                "label": "صفحه نمایش",
                 "type": "button",
                 "params": "?screenshare"
             },
             {
-                "label": "Allow both",
+                "label": "اجازه هر دو",
                 "type": "button",
                 "params": "?"
             },
             {
-                "label": "File",
+                "label": "فایل",
                 "type": "button",
                 "params": "?fs"
             }
         ]
     },
     {
-        "title": "Camera quality",
-        "description": "Tell OBS Ninja what resolution and fps target you want for your camera. These are not guaranteed, but subject to the system's abilities",
+        "title": "کیفیت دوربین",
+        "description": "به RemoteVm بگویید چه رزولوشن و نرخ فریم هدفی برای دوربین خود می‌خواهید. این‌ها تضمین شده نیستند و به توانایی‌های سیستم بستگی دارند.",
         "answers": [
             {
-                "label": "Up to 1080p60",
+                "label": "تا 1080p60",
                 "type": "button",
                 "params": "&quality=0"
             },
             {
-                "label": "Up to 720p30",
+                "label": "تا 720p30",
                 "type": "button",
                 "params": "&quality=1"
             },
             {
-                "label": "Up to 360p30",
+                "label": "تا 360p30",
                 "type": "button",
                 "params": "&quality=2"
             },
             {
-                "label": "Use default",
+                "label": "استفاده از پیش‌فرض",
                 "type": "button",
                 "params": ""
             }
         ]
     },
     {
-        "title": "Stereo sound",
-        "description": "Set resolution and fps will be requested but are not guaranteed and depend on the guest's hardware. Warning: audio normalization (auto-gain), noise cancellation and echo cancellation will not be disabled.",
+        "title": "صدا استریو",
+        "description": "رزولوشن و نرخ فریم درخواست شده‌اند اما تضمین نمی‌شوند و به سخت‌افزار مهمان بستگی دارند. هشدار: نرمال‌سازی صدا (افزایش خودکار)، حذف نویز و حذف اکو غیرفعال نمی‌شوند.",
         "answers": [
             {
-                "label": "Default",
+                "label": "پیش‌فرض",
                 "type": "button",
                 "params": ""
             },
             {
-                "label": "Stereo",
+                "label": "استریو",
                 "type": "button",
                 "params": "&stereo=1"
             }
         ]
     },
     {
-        "title": "Auto start with Default Camera and Mic",
-        "description": "With this option, the user's default camera and mic are used, bypassing the selection page. This can be changed after the fact by selecting the gear icon.",
+        "title": "شروع خودکار با دوربین و میکروفون پیش‌فرض",
+        "description": "با این گزینه، دوربین و میکروفون پیش‌فرض کاربر استفاده می‌شود و صفحه انتخاب دور زده می‌شود. این می‌تواند پس از آن با انتخاب آیکون تنظیمات تغییر کند.",
         "answers": [
             {
-                "label": "Don't auto start",
+                "label": "شروع خودکار نشود",
                 "type": "button",
                 "params": ""
             },
             {
-                "label": "Auto start",
+                "label": "شروع خودکار",
                 "type": "button",
                 "params": "&autostart&device=1"
             }
         ]
     },
     {
-        "title": "Guest label",
-        "description": "You can set a label for this invite. OBS Studio will use it when you drag the link there; Browser tab will be named after it.",
+        "title": "برچسب مهمان",
+        "description": "می‌توانید برچسبی برای این دعوت تنظیم کنید. OBS Studio از آن هنگام کشیدن لینک استفاده می‌کند؛ تب مرورگر نیز با این نام نام‌گذاری می‌شود.",
         "answers": [
             {
-                "label": "No label",
+                "label": "بدون برچسب",
                 "type": "button",
                 "params": ""
             },
             {
-                "label": "Let guest decide",
+                "label": "اجازه دهید مهمان تصمیم بگیرد",
                 "type": "button",
                 "params": "&label="
-            },{
-                "label": "Set label",
+            },
+            {
+                "label": "تنظیم برچسب",
                 "type": "text",
                 "params": "&label="
             }
         ]
     },
     {
-        "title": "Room selection",
-        "description": "Multiple guests can hear and see each other if they join the same room.",
+        "title": "انتخاب اتاق",
+        "description": "چندین مهمان می‌توانند یکدیگر را ببینند و بشنوند اگر به همان اتاق ملحق شوند.",
         "answers": [
             {
-                "label": "Use named room",
+                "label": "استفاده از اتاق با نام",
                 "type": "text",
                 "params": "&room="
             },
             {
-                "label": "No room",
+                "label": "بدون اتاق",
                 "type": "button",
                 "params": ""
             }
         ]
     },
     {
-        "title": "Control what the guest see",
-        "description": "Broadcast Mode makes it so guests in a room can only see the video feed from the director. Audio between all the participants remains. This saves on guest's bandwidth and CPU usage. A custom push ID can also be used.",
+        "title": "کنترل آنچه مهمان می‌بیند",
+        "description": "حالت پخش باعث می‌شود مهمانان در یک اتاق فقط فید ویدئویی کارگردان را ببینند. صدا بین همه شرکت‌کنندگان باقی می‌ماند. این کار پهنای باند و استفاده از CPU مهمان را کاهش می‌دهد. همچنین می‌توان از یک شناسه پخش سفارشی استفاده کرد.",
         "answers": [
             {
-                "label": "Enable Broadcast Mode",
+                "label": "فعال کردن حالت پخش",
                 "type": "button",
                 "params": "&broadcast"
             },
             {
-                "label": "Guests see everyone",
+                "label": "مهمانان همه را ببینند",
                 "type": "button",
                 "params": ""
             },
             {
-                "label": "Custom Broadcast PushID",
+                "label": "شناسه پخش سفارشی",
                 "type": "text",
                 "params": "&broadcast="
             },
             {
-                "label": "I'm not using a room",
+                "label": "من از اتاق استفاده نمی‌کنم",
                 "type": "button",
                 "params": ""
             }
         ]
     },
     {
-        "title": "Mute mic when joining?",
+        "title": "میکروفون هنگام پیوستن خاموش باشد؟",
         "description": "",
         "answers": [
             {
-                "label": "Start muted",
+                "label": "شروع با خاموش",
                 "type": "button",
                 "params": "&muted"
             },
             {
-                "label": "Start unmuted",
+                "label": "شروع با روشن",
                 "type": "button",
                 "params": ""
             }
         ]
     },
     {
-        "title": "Local video preview",
+        "title": "پیش‌نمایش ویدئوی محلی",
         "description": "",
         "answers": [
             {
-                "label": "Show",
+                "label": "نمایش",
                 "type": "button",
                 "params": ""
             },
             {
-                "label": "Hide",
+                "label": "مخفی کردن",
                 "type": "button",
                 "params": "&nopreview"
             }
         ]
     },
     {
-        "title": "Video Codec",
-        "description": "The Default Codec (VP8) is a good balance for most. In certain rare situations, H.264 can be hardware accelerated and VP9 is only intended for those who can cope with the higher CPU usage in exchange for better quality at lower bitrates. Mobile users should stick to the default.",
+        "title": "کدک ویدئو",
+        "description": "کدک پیش‌فرض (VP8) برای اکثر موارد تعادل خوبی دارد. در برخی موارد نادر، H.264 می‌تواند به‌صورت سخت‌افزاری شتاب‌دهی شود و VP9 فقط برای کسانی است که می‌توانند با مصرف CPU بالاتر در ازای کیفیت بهتر در نرخ بیت پایین‌تر کنار بیایند. کاربران موبایل باید به پیش‌فرض پایبند باشند.",
         "answers": [
             {
-                "label": "Default",
+                "label": "پیش‌فرض",
                 "type": "button",
                 "params": ""
             },
@@ -200,16 +200,16 @@
         ]
     },
     {
-        "title": "Push ID",
-        "description": "Push IDs must be unique. Supply your own custom ID or let the system generate a random ID for you. This is useful is you want your guests to have reusable links.",
+        "title": "شناسه پخش",
+        "description": "شناسه‌های پخش باید یکتا باشند. شناسه سفارشی خود را وارد کنید یا اجازه دهید سیستم یک شناسه تصادفی برای شما تولید کند. این برای زمانی که می‌خواهید مهمانان شما لینک‌های قابل استفاده مجدد داشته باشند مفید است.",
         "answers": [
             {
-                "label": "random push id",
+                "label": "شناسه پخش تصادفی",
                 "type": "button",
                 "params": "push="
             },
             {
-                "label": "CustomPushID",
+                "label": "شناسه پخش سفارشی",
                 "type": "text",
                 "params": "push="
             }
