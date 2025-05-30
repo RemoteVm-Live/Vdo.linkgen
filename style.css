@@ -21,7 +21,7 @@ body {
 }
 
 h1 {
-    color: var(--neon-blue);
+    color: #00ffff;
     display: block;
     text-shadow: var(--glow-shadow);
     text-align: right; /* راست‌چین کردن عنوان */
