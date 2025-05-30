@@ -1,33 +1,30 @@
 :root {
-    --background-color: #0B132B; /* پس‌زمینه تیره با حس فضایی */
-    --background-color2: #371559; /* پس‌زمینه تیره با حس فضایی گرادینت*/
-    --container-color: #1A2338; /* رنگ کانتینر با ته‌رنگ متالیک */
-    --button-color: #2A3B4F; /* دکمه با حس تکنولوژی پیشرفته */
-    --neon-blue: #00E5FF; /* آبی الکتریکی نئونی */
-    --neon-purple: #9C27B0; /* بنفش عمیق با حس Hi-Tech */
-    --neon-green: #39FF14; /* سبز نئونی درخشان */
-    --neon-pink: #FF2E63; /* صورتی پررنگ برای جذابیت بصری */
-    --neon-silver: #B0BEC5; /* نقره‌ای متالیک برای حس تکنولوژی */
+    --background-color: #0A0F1F;
+    --container-color: #1A2338;
+    --button-color: #2E3A59;
+    --neon-blue: #00D4FF;
+    --neon-purple: #7B00FF;
+    --neon-green: #00FF85;
+    --neon-pink: #FF007A;
     --regular-margin: 10px;
-    --glow-shadow: 0 0 20px rgba(0, 229, 255, 0.6); /* درخشش نئونی قوی‌تر */
-    --text-color: #E0E7FF; /* رنگ متن روشن با حس مدرن */
+    --glow-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
 }
 
 body {
-    background: radial-gradient(135deg, var(--background-color), #1a2338 70%, var(--background-color2) 100%);
+    background: linear-gradient(135deg, var(--background-color), #211c26);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Vazir', 'IranSans', 'Tahoma', sans-serif;
-    direction: rtl;
+    font-family: 'Vazir', 'IranSans', 'Tahoma', sans-serif; /* فونت‌های مناسب فارسی */
+    direction: rtl; /* تنظیم جهت‌گیری راست به چپ */
     overflow: hidden;
 }
 
 h1 {
-    color: var(--neon-silver);
+    color: var(--neon-blue);
     display: block;
-    text-shadow: var(--glow-shadow), 0 0 5px rgba(0, 229, 255, 0.8);
-    text-align: right;
+    text-shadow: var(--glow-shadow);
+    text-align: right; /* راست‌چین کردن عنوان */
 }
 
 input {
@@ -39,28 +36,28 @@ input[type="radio"] {
 }
 
 #link {
-    background: linear-gradient(45deg, var(--container-color), #2E3B55);
+    background: var(--container-color);
     padding: 10px;
-    text-align: right;
+    text-align: right; /* راست‌چین کردن متن */
     border: 2px solid var(--neon-green);
-    border-radius: 10px;
-    box-shadow: var(--glow-shadow), inset 0 0 8px rgba(57, 255, 20, 0.3);
+    border-radius: 8px;
+    box-shadow: var(--glow-shadow);
     transition: all 0.3s ease;
 }
 
 #outputUrl {
     padding: 10px 20px;
     background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
-    color: var(--text-color);
+    color: #ffffff;
     text-decoration: none;
     font-weight: bold;
-    border-radius: 6px;
+    border-radius: 4px;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 #outputUrl:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 25px var(--neon-blue), 0 0 10px var(--neon-silver);
+    box-shadow: 0 0 20px var(--neon-blue);
 }
 
 #step {
@@ -69,46 +66,46 @@ input[type="radio"] {
     width: 60vw;
     top: 50%;
     transform: translateY(-50%);
-    background: linear-gradient(45deg, var(--container-color), #2A3B4F);
+    background: var(--container-color);
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 10px;
     flex-direction: column;
-    color: var(--text-color);
-    box-shadow: 0 0 30px rgba(0, 229, 255, 0.4), inset 0 0 12px rgba(0, 229, 255, 0.3);
+    color: var(--neon-blue);
+    box-shadow: 0 0 25px rgba(0, 212, 255, 0.3), inset 0 0 10px rgba(0, 212, 255, 0.2);
     border: 2px solid var(--neon-purple);
-    border-radius: 10px;
+    border-radius: 8px;
     animation: pulse 2s infinite ease-in-out;
 }
 
 #step #stepNumber {
     position: absolute;
     top: -35px;
-    left: -20px;
+    left: -20px; /* تغییر به سمت چپ برای سازگاری با RTL */
     width: 40px;
     height: 40px;
     background: var(--neon-green);
     border-radius: 50px;
     line-height: 40px;
     text-align: center;
-    color: var(--background-color);
-    box-shadow: 0 0 15px var(--neon-green), 0 0 5px var(--neon-silver);
+    color: #0A0F1F;
+    box-shadow: 0 0 12px var(--neon-green);
     border: 1px solid var(--neon-blue);
 }
 
 #step #stepDescription {
     font-weight: normal;
     width: 80%;
-    color: var(--neon-silver);
-    text-align: right;
+    color: #C0CAF5;
+    text-align: right; /* راست‌چین کردن توضیحات */
 }
 
 #step #stepTitle {
     font-size: 2em;
     margin-bottom: 1em;
-    text-shadow: 0 0 12px var(--neon-blue), 0 0 5px var(--neon-silver);
-    text-align: right;
+    text-shadow: 0 0 10px var(--neon-blue);
+    text-align: right; /* راست‌چین کردن عنوان */
 }
 
 #step #stepAnswers {
@@ -119,38 +116,38 @@ input[type="radio"] {
 #step #stepAnswers a {
     padding: 10px 15px;
     border: 1px solid var(--neon-green);
-    border-radius: 6px;
+    border-radius: 4px;
     margin: 10px;
     background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
     text-transform: uppercase;
     cursor: pointer;
     font-weight: bold;
-    color: var(--text-color);
+    color: #ffffff;
     transition: all 0.3s ease;
 }
 
 #step #stepAnswers a:hover {
     background: linear-gradient(45deg, var(--neon-purple), var(--neon-pink));
-    box-shadow: 0 0 20px var(--neon-pink), 0 0 8px var(--neon-silver);
+    box-shadow: 0 0 15px var(--neon-pink);
     transform: translateY(-2px);
 }
 
 #step #stepAnswers input {
     margin: 10px;
-    background: var(--background-color);
+    background: #0A0F1F;
     border: 1px solid var(--neon-blue);
     padding: 4px;
-    color: var(--neon-silver);
-    border-radius: 6px;
-    direction: rtl;
+    color: var(--neon-blue);
+    border-radius: 4px;
+    direction: rtl; /* راست‌چین کردن ورودی‌ها */
 }
 
 #link h1 {
     text-transform: uppercase;
     font-size: 1.5em;
-    text-align: right;
-    margin-right: 10px;
-    text-shadow: 0 0 10px var(--neon-blue), 0 0 4px var(--neon-silver);
+    text-align: right; /* راست‌چین کردن */
+    margin-right: 10px; /* تغییر margin برای سازگاری با RTL */
+    text-shadow: 0 0 8px var(--neon-blue);
 }
 
 #link.final {
@@ -163,36 +160,36 @@ input[type="radio"] {
 }
 
 #link p {
-    color: var(--neon-silver);
-    text-shadow: 0 0 6px var(--neon-blue);
-    text-align: right;
+    color: var(--neon-blue);
+    text-shadow: 0 0 5px var(--neon-blue);
+    text-align: right; /* راست‌چین کردن پاراگراف */
 }
 
 #progressAndLink {
     width: 60vw;
     height: auto;
-    background: linear-gradient(45deg, var(--container-color), #2A3B4F);
+    background: var(--container-color);
     position: absolute;
     bottom: 10%;
     transition: all 0.3s linear;
     overflow: hidden;
     border: 1px solid var(--neon-purple);
-    box-shadow: 0 0 20px rgba(156, 39, 176, 0.4);
+    box-shadow: 0 0 15px rgba(123, 0, 255, 0.3);
 }
 
 #progress {
     height: 20px;
     background: linear-gradient(90deg, var(--neon-green), var(--neon-blue));
     transition: all 0.2s ease-in-out;
-    color: var(--text-color);
+    color: #ffffff;
     font-size: 16px;
     padding: 2px;
     line-height: 22px;
     text-align: center;
-    box-shadow: 0 0 12px var(--neon-green);
+    box-shadow: 0 0 10px var(--neon-green);
 }
 
- #finalUrl {
+#finalUrl {
     display: block;
     width: 100%;
     border: none;
@@ -201,15 +198,15 @@ input[type="radio"] {
     font-weight: bold;
     margin: 0;
     padding: 0;
-    text-shadow: 0 0 6px var(--neon-blue);
-    direction: ltr;
-    text-align: left;
+    text-shadow: 0 0 5px var(--neon-blue);
+    direction: ltr; /* URL باید چپ به راست باشد */
+    text-align: left; /* URL باید چپ‌چین باشد */
 }
 
 @keyframes pulse {
-    0% { box-shadow: 0 0 30px rgba(0, 229, 255, 0.4), inset 0 0 12px rgba(0, 229, 255, 0.3); }
-    50% { box-shadow: 0 0 40px rgba(0, 229, 255, 0.6), inset 0 0 18px rgba(0, 229, 255, 0.4); }
-    100% { box-shadow: 0 0 30px rgba(0, 229, 255, 0.4), inset 0 0 12px rgba(0, 229, 255, 0.3); }
+    0% { box-shadow: 0 0 25px rgba(0, 212, 255, 0.3), inset 0 0 10px rgba(0, 212, 255, 0.2); }
+    50% { box-shadow: 0 0 35px rgba(0, 212, 255, 0.5), inset 0 0 15px rgba(0, 212, 255, 0.3); }
+    100% { box-shadow: 0 0 25px rgba(0, 212, 255, 0.3), inset 0 0 10px rgba(0, 212, 255, 0.2); }
 }
 
 @media only screen
@@ -219,7 +216,7 @@ input[type="radio"] {
    
     body {
         align-items: flex-start;
-        background: linear-gradient(135deg, var(--background-color), #1C2526 70%, var(--neon-blue) 100%);
+        background: linear-gradient(135deg, var(--background-color), #1C2526);
     }
    
     #step {
@@ -228,13 +225,13 @@ input[type="radio"] {
        position: inherit;
        top: inherit;
        transform: inherit;
-       box-shadow: 0 0 25px rgba(0, 229, 255, 0.5);
+       box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
     }
 
     #step #stepNumber {
-        left: calc(50% - 20px);
+        left: calc(50% - 20px); /* تغییر به سمت چپ برای سازگاری با RTL */
         top: 0;
-        box-shadow: 0 0 15px var(--neon-green);
+        box-shadow: 0 0 12px var(--neon-green);
     }
 
     #stepAnswers {
@@ -250,6 +247,6 @@ input[type="radio"] {
     #progressAndLink {
         width: 90vw;
         bottom: 20px;
-        box-shadow: 0 0 20px rgba(156, 39, 176, 0.4);
+        box-shadow: 0 0 15px rgba(123, 0, 255, 0.3);
     }
 }
