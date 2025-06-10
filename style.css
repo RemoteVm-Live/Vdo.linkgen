@@ -1,31 +1,60 @@
 :root {
-    --background-color: #0A0F1F;
-    --container-color: #1A2338;
-    --button-color: #2E3A59;
-    --neon-blue: #00D4FF;
-    --neon-blues: #00ffff;
-    --neon-purple: #7B00FF;
-    --neon-green: #00FF85;
-    --neon-pink: #FF007A;
-    --regular-margin: 10px;
-    --glow-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+    /* New Color Palette from about.remotevm.ir */
+    --primary-color: #00e1ff; /* Similar to neon-blue */
+    --primary-color-rgb: 0, 225, 255;
+    --secondary-color: #ff00e1; /* Similar to neon-purple / neon-pink */
+    --secondary-color-rgb: 255, 0, 225;
+    --accent-color: #00ff8c; /* Similar to neon-green */
+    --accent-color-rgb: 0, 255, 140;
+    --background-dark: #05080f; /* Very dark background */
+    --container-background: rgba(8, 12, 22, 0.92); /* Dark, slightly transparent container */
+    --card-background: rgba(12, 18, 30, 0.9); /* Slightly lighter dark transparent background for cards/buttons */
+    --text-color: #b0c4de; /* General text color */
+    --text-color-rgb: 176, 196, 222;
+    --text-highlight: #ffffff; /* Highlighted text color */
+    --text-muted: #a0b0cc; /* Muted text color */
+    --font-family: 'Vazirmatn', 'Arial', sans-serif;
+    --glitch-color-1: var(--primary-color);
+    --glitch-color-2: var(--secondary-color);
+    --glitch-color-3: #ff3c3c; /* Red for RGB split in glitch effect */
+
+    /* Inherited/Adapted from previous style.css for clarity, now mapped to new variables */
+    --glow-shadow-primary: 0 0 15px rgba(var(--primary-color-rgb), 0.5);
+    --glow-shadow-accent: 0 0 12px var(--accent-color);
 }
 
-body {
-    background: linear-gradient(135deg, var(--background-color), #211c26);
+/* Global resets and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    min-height: 100vh;
+    font-family: var(--font-family);
+    background: linear-gradient(135deg, var(--background-dark), #1C2526); /* Adapted from previous gradient, using new dark base */
+    color: var(--text-color);
+    line-height: 1.7;
+    overflow-x: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Vazir', 'IranSans', 'Tahoma', sans-serif; /* فونت‌های مناسب فارسی */
-    direction: rtl; /* تنظیم جهت‌گیری راست به چپ */
-    overflow: hidden;
+    direction: rtl; /* Right-to-left for Persian */
+    text-align: right; /* Right-align text by default */
+}
+
+/* Force Vazirmatn for specific elements as per previous inline style */
+body, button, input, select, label, h1, h2, h3, h4, span, div, p, a, li {
+    font-family: 'Vazirmatn', sans-serif !important;
 }
 
 h1 {
-    color: var(--neon-blues);
+    color: var(--primary-color); /* Main title color */
     display: block;
-    text-shadow: var(--glow-shadow);
-    text-align: right; /* راست‌چین کردن عنوان */
+    text-shadow: 0 0 10px rgba(var(--primary-color-rgb), 0.7); /* Glow effect from about page */
+    text-align: right;
+    font-weight: 500;
 }
 
 input {
@@ -36,30 +65,36 @@ input[type="radio"] {
     display: inline;
 }
 
+/* Specific styles for linkgen.remotevm.ir elements */
+
 #link {
-    background: var(--container-color);
+    background: var(--container-background);
     padding: 10px;
-    text-align: right; /* راست‌چین کردن متن */
-    border: 2px solid var(--neon-green);
+    text-align: right;
+    border: 2px solid var(--accent-color); /* Neon green border */
     border-radius: 8px;
-    box-shadow: var(--glow-shadow);
+    box-shadow: 0 0 20px rgba(var(--accent-color-rgb), 0.4), inset 0 0 8px rgba(var(--accent-color-rgb), 0.2);
     transition: all 0.3s ease;
+    margin-top: 20px; /* Adjust as needed for layout */
 }
 
 #outputUrl {
     padding: 10px 20px;
-    background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
-    color: #ffffff;
+    background: linear-gradient(45deg, var(--secondary-color), var(--primary-color)); /* Neon gradient */
+    color: var(--text-highlight);
     text-decoration: none;
     font-weight: bold;
     border-radius: 4px;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 0 15px rgba(var(--secondary-color-rgb), 0.5);
+    display: inline-block; /* To allow transform on hover */
 }
 
 #outputUrl:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 20px var(--neon-blue);
+    box-shadow: 0 0 25px rgba(var(--primary-color-rgb), 0.7);
 }
+
 
 #step {
     position: absolute;
@@ -67,88 +102,103 @@ input[type="radio"] {
     width: 60vw;
     top: 50%;
     transform: translateY(-50%);
-    background: var(--container-color);
+    background: var(--container-background);
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 10px;
     flex-direction: column;
-    color: var(--neon-blue);
-    box-shadow: 0 0 25px rgba(0, 212, 255, 0.3), inset 0 0 10px rgba(0, 212, 255, 0.2);
-    border: 2px solid var(--neon-purple);
-    border-radius: 8px;
+    color: var(--text-color); /* Adjusted to text-color */
+    box-shadow: 0 0 60px rgba(var(--primary-color-rgb), 0.2),
+                0 0 30px rgba(var(--secondary-color-rgb), 0.15),
+                inset 0 0 15px rgba(0, 0, 0, 0.3); /* Adopted from about.remotevm.ir content-container */
+    border: 2px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to left, var(--primary-color), var(--secondary-color)); /* Gradient border */
+    border-radius: 20px; /* Increased border-radius for softer look */
     animation: pulse 2s infinite ease-in-out;
 }
 
 #step #stepNumber {
     position: absolute;
     top: -35px;
-    left: -20px; /* تغییر به سمت چپ برای سازگاری با RTL */
+    left: -20px; /* Consistent with RTL */
     width: 40px;
     height: 40px;
-    background: var(--neon-green);
-    border-radius: 50px;
+    background: var(--accent-color); /* Neon green */
+    border-radius: 50%; /* Changed from 50px to 50% for perfect circle */
     line-height: 40px;
     text-align: center;
-    color: #0A0F1F;
-    box-shadow: 0 0 12px var(--neon-green);
-    border: 1px solid var(--neon-blue);
+    color: var(--background-dark); /* Dark text on bright background */
+    box-shadow: var(--glow-shadow-accent);
+    border: 1px solid var(--primary-color);
 }
 
 #step #stepDescription {
     font-weight: normal;
     width: 80%;
-    color: #C0CAF5;
-    text-align: right; /* راست‌چین کردن توضیحات */
+    color: var(--text-muted); /* Muted text color */
+    text-align: right;
+    font-size: 1.05rem; /* Consistent with about page body text */
 }
 
 #step #stepTitle {
-    font-size: 2em;
+    font-size: 2.2rem; /* Adjusted from 2em */
     margin-bottom: 1em;
-    text-shadow: 0 0 10px var(--neon-blue);
-    text-align: right; /* راست‌چین کردن عنوان */
+    color: var(--primary-color); /* Primary color for titles */
+    text-shadow: 0 0 8px rgba(var(--primary-color-rgb), 0.7); /* Adapted from about page main-title */
+    text-align: right;
+    font-weight: 500;
 }
 
 #step #stepAnswers {
     display: flex;
     margin-top: 5em;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    justify-content: center; /* Center buttons */
 }
 
 #step #stepAnswers a {
-    padding: 10px 15px;
-    border: 1px solid var(--neon-green);
-    border-radius: 4px;
+    padding: 14px 30px; /* Increased padding like cta-button */
+    border: none; /* Border via background-size */
+    border-radius: 10px; /* Increased border-radius like cta-button */
     margin: 10px;
-    background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+    background: linear-gradient(95deg, var(--secondary-color), var(--primary-color)); /* New gradient for buttons */
     text-transform: uppercase;
     cursor: pointer;
-    font-weight: bold;
-    color: #ffffff;
-    transition: all 0.3s ease;
+    font-weight: 500; /* Consistent with cta-button */
+    color: var(--text-highlight);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-position 0.5s ease; /* From cta-button */
+    box-shadow: 0 5px 18px rgba(var(--primary-color-rgb), 0.35), 0 3px 8px rgba(var(--secondary-color-rgb), 0.2);
+    background-size: 200% 100%;
+    background-position: right bottom;
 }
 
 #step #stepAnswers a:hover {
-    background: linear-gradient(45deg, var(--neon-purple), var(--neon-pink));
-    box-shadow: 0 0 15px var(--neon-pink);
-    transform: translateY(-2px);
+    transform: translateY(-4px) scale(1.03); /* Hover effect from cta-button */
+    box-shadow: 0 8px 25px rgba(var(--primary-color-rgb), 0.45), 0 5px 12px rgba(var(--secondary-color-rgb), 0.3);
+    background-position: left bottom;
 }
 
 #step #stepAnswers input {
     margin: 10px;
-    background: #0A0F1F;
-    border: 1px solid var(--neon-blue);
-    padding: 4px;
-    color: var(--neon-blue);
-    border-radius: 4px;
-    direction: rtl; /* راست‌چین کردن ورودی‌ها */
+    background: var(--background-dark); /* Dark background */
+    border: 1px solid var(--primary-color); /* Primary color border */
+    padding: 14px 15px; /* Increased padding */
+    color: var(--text-highlight); /* Highlighted text color */
+    border-radius: 10px; /* Increased border-radius */
+    direction: rtl;
+    font-size: 1rem; /* Consistent font size */
+    box-shadow: inset 0 0 8px rgba(var(--primary-color-rgb), 0.1); /* Inner shadow */
 }
 
 #link h1 {
     text-transform: uppercase;
     font-size: 1.5em;
-    text-align: right; /* راست‌چین کردن */
-    margin-right: 10px; /* تغییر margin برای سازگاری با RTL */
-    text-shadow: 0 0 8px var(--neon-blue);
+    text-align: right;
+    margin-right: 10px;
+    color: var(--primary-color); /* Updated to primary color */
+    text-shadow: 0 0 8px rgba(var(--primary-color-rgb), 0.7); /* Consistent glow */
 }
 
 #link.final {
@@ -161,33 +211,34 @@ input[type="radio"] {
 }
 
 #link p {
-    color: var(--neon-blue);
-    text-shadow: 0 0 5px var(--neon-blue);
-    text-align: right; /* راست‌چین کردن پاراگراف */
+    color: var(--text-color); /* General text color */
+    text-shadow: 0 0 5px rgba(var(--text-color-rgb), 0.3);
+    text-align: right;
 }
 
 #progressAndLink {
     width: 60vw;
     height: auto;
-    background: var(--container-color);
+    background: var(--container-background);
     position: absolute;
     bottom: 10%;
     transition: all 0.3s linear;
     overflow: hidden;
-    border: 1px solid var(--neon-purple);
-    box-shadow: 0 0 15px rgba(123, 0, 255, 0.3);
+    border: 1px solid var(--secondary-color); /* Secondary color border */
+    box-shadow: 0 0 20px rgba(var(--secondary-color-rgb), 0.3), inset 0 0 8px rgba(var(--secondary-color-rgb), 0.1);
+    border-radius: 15px; /* Rounded corners */
 }
 
 #progress {
     height: 20px;
-    background: linear-gradient(90deg, var(--neon-green), var(--neon-blue));
+    background: linear-gradient(90deg, var(--accent-color), var(--primary-color)); /* Green to blue gradient */
     transition: all 0.2s ease-in-out;
-    color: #ffffff;
+    color: var(--text-highlight);
     font-size: 16px;
     padding: 2px;
     line-height: 22px;
     text-align: center;
-    box-shadow: 0 0 10px var(--neon-green);
+    box-shadow: var(--glow-shadow-accent);
 }
 
 #finalUrl {
@@ -195,59 +246,169 @@ input[type="radio"] {
     width: 100%;
     border: none;
     background: transparent;
-    color: var(--neon-blue);
+    color: var(--text-highlight); /* Highlighted text color */
     font-weight: bold;
     margin: 0;
-    padding: 0;
-    text-shadow: 0 0 5px var(--neon-blue);
-    direction: ltr; /* URL باید چپ به راست باشد */
-    text-align: left; /* URL باید چپ‌چین باشد */
+    padding: 15px; /* Add some padding */
+    text-shadow: 0 0 8px rgba(var(--primary-color-rgb), 0.6); /* Glitch-like shadow */
+    direction: ltr;
+    text-align: left;
+    white-space: nowrap; /* Prevent URL from wrapping */
+    overflow: hidden; /* Hide overflow */
+    text-overflow: ellipsis; /* Add ellipsis for long URLs */
 }
 
+/* Animations from about.remotevm.ir */
 @keyframes pulse {
-    0% { box-shadow: 0 0 25px rgba(0, 212, 255, 0.3), inset 0 0 10px rgba(0, 212, 255, 0.2); }
-    50% { box-shadow: 0 0 35px rgba(0, 212, 255, 0.5), inset 0 0 15px rgba(0, 212, 255, 0.3); }
-    100% { box-shadow: 0 0 25px rgba(0, 212, 255, 0.3), inset 0 0 10px rgba(0, 212, 255, 0.2); }
+    0% { box-shadow: 0 0 60px rgba(var(--primary-color-rgb), 0.2), inset 0 0 15px rgba(0, 0, 0, 0.3); }
+    50% { box-shadow: 0 0 75px rgba(var(--primary-color-rgb), 0.3), inset 0 0 20px rgba(0, 0, 0, 0.4); }
+    100% { box-shadow: 0 0 60px rgba(var(--primary-color-rgb), 0.2), inset 0 0 15px rgba(0, 0, 0, 0.3); }
 }
 
-@media only screen
-  and (min-device-width: 375px)
-  and (max-device-width: 812px)
-  and (orientation: portrait) {
-   
+.glitch-text {
+    position: relative;
+    color: var(--text-highlight);
+    font-weight: 500;
+    text-shadow: 0 0 8px rgba(var(--primary-color-rgb), 0.6);
+    animation: glitchShake 2.5s infinite ease-in-out;
+    will-change: transform, text-shadow;
+}
+.glitch-text::before,
+.glitch-text::after {
+    content: attr(data-text); /* Assumes data-text attribute is set in HTML */
+    position: absolute;
+    top: 0;
+    inset-inline-end: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--background-dark); /* Match body background */
+}
+.glitch-text::before {
+    color: var(--glitch-color-1);
+    text-shadow: 2px 0 var(--glitch-color-3), 0 0 10px rgba(var(--primary-color-rgb), 0.5);
+    animation: glitchShift1 1.5s infinite linear alternate, glitchClip1 2s infinite steps(1);
+    inset-inline-end: 2px;
+}
+.glitch-text::after {
+    color: var(--glitch-color-2);
+    text-shadow: -2px 0 var(--accent-color), 0 0 10px rgba(var(--secondary-color-rgb), 0.5);
+    animation: glitchShift2 1.8s infinite linear alternate, glitchClip2 2.2s infinite steps(1);
+    inset-inline-end: -2px;
+}
+
+@keyframes glitchShake {
+    0%, 100% { transform: translate(0, 0); }
+    10% { transform: translate(1px, -1px); }
+    20% { transform: translate(-1px, 1px); }
+    30% { transform: translate(0.5px, -0.5px); }
+    40% { transform: translate(-0.5px, 0.5px); }
+    50% { transform: translate(1px, 0); }
+    60% { transform: translate(-1px, -0.5px); }
+    70% { transform: translate(0.5px, 1px); }
+    80% { transform: translate(-0.5px, -1px); }
+    90% { transform: translate(0, 0.5px); }
+}
+@keyframes glitchShift1 {
+    0% { transform: translate(0, 0); }
+    40% { transform: translate(2px, 0); }
+    60% { transform: translate(-2px, 0); }
+    100% { transform: translate(0, 0); }
+}
+@keyframes glitchShift2 {
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(-3px, 1px); }
+    75% { transform: translate(3px, -1px); }
+    100% { transform: translate(0, 0); }
+}
+@keyframes glitchClip1 {
+    0% { clip-path: inset(20% 0 60% 0); clip: rect(20%, 9999px, 60%, 0); }
+    20% { clip-path: inset(80% 0 10% 0); clip: rect(80%, 9999px, 10%, 0); }
+    40% { clip-path: inset(50% 0 20% 0); clip: rect(50%, 9999px, 20%, 0); }
+    60% { clip-path: inset(10% 0 70% 0); clip: rect(10%, 9999px, 70%, 0); }
+    80% { clip-path: inset(70% 0 15% 0); clip: rect(70%, 9999px, 15%, 0); }
+    100% { clip-path: inset(30% 0 50% 0); clip: rect(30%, 9999px, 50%, 0); }
+}
+@keyframes glitchClip2 {
+    0% { clip-path: inset(60% 0 20% 0); clip: rect(60%, 9999px, 20%, 0); }
+    25% { clip-path: inset(10% 0 80% 0); clip: rect(10%, 9999px, 80%, 0); }
+    50% { clip-path: inset(40% 0 30% 0); clip: rect(40%, 9999px, 30%, 0); }
+    75% { clip-path: inset(90% 0 5% 0); clip: rect(90%, 9999px, 5%, 0); }
+    100% { clip-path: inset(25% 0 65% 0); clip: rect(25%, 9999px, 65%, 0); }
+}
+
+
+/* Responsive adjustments, adapted for linkgen.remotevm.ir elements */
+@media (max-width: 768px) {
     body {
-        align-items: flex-start;
-        background: linear-gradient(135deg, var(--background-color), #1C2526);
+        align-items: flex-start; /* Align content to top for better mobile display */
+        padding-top: 30px; /* Add some top padding */
     }
-   
+
     #step {
-       width: 90vw;
-       height: 80vh;
-       position: inherit;
-       top: inherit;
-       transform: inherit;
-       box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+        width: 90vw;
+        height: 80vh;
+        position: static; /* Change from absolute to static for flow */
+        transform: none; /* Remove transform */
+        box-shadow: 0 0 30px rgba(var(--primary-color-rgb), 0.4); /* Stronger mobile shadow */
+        margin-bottom: 20px; /* Space between step and progress */
     }
 
     #step #stepNumber {
-        left: calc(50% - 20px); /* تغییر به سمت چپ برای سازگاری با RTL */
+        left: calc(50% - 20px); /* Center number */
         top: 0;
-        box-shadow: 0 0 12px var(--neon-green);
+        transform: translateY(-50%); /* Adjust for static position */
+        box-shadow: var(--glow-shadow-accent);
     }
 
     #stepAnswers {
-        margin-top: 0px;
-        flex-direction: column;
+        margin-top: 2em; /* Reduced margin */
+        flex-direction: column; /* Stack buttons vertically */
+        align-items: center; /* Center stacked buttons */
     }
 
-    #step #stepAnswers a {
-        margin: 5px;
-        background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+    #step #stepAnswers a, #step #stepAnswers input {
+        width: 90%; /* Make buttons/inputs wider */
+        margin: 8px 0; /* Adjust margin for stacking */
+        text-align: center;
     }
 
     #progressAndLink {
         width: 90vw;
         bottom: 20px;
-        box-shadow: 0 0 15px rgba(123, 0, 255, 0.3);
+        position: static; /* Change from absolute to static */
+        box-shadow: 0 0 25px rgba(var(--secondary-color-rgb), 0.4);
+    }
+
+    #finalUrl {
+        font-size: 0.9em; /* Smaller font for URL on mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    #step #stepTitle {
+        font-size: 1.8rem; /* Further reduce title size */
+    }
+    #step #stepDescription {
+        font-size: 0.95rem; /* Smaller description text */
+    }
+}
+
+/* Accessibility: Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    #step, #step #stepNumber, #step #stepAnswers a, #step #stepAnswers input,
+    #progressAndLink, #progress, #outputUrl, #finalUrl,
+    .glitch-text,
+    @keyframes pulse, @keyframes glitchShake, @keyframes glitchShift1, @keyframes glitchShift2, @keyframes glitchClip1, @keyframes glitchClip2 {
+        animation: none !important;
+        transition: none !important;
+        transform: none !important; /* Ensure transforms are reset */
+        box-shadow: none !important; /* Remove shadows */
+    }
+     #step {
+        border-image-source: none !important; /* Remove gradient border */
+        border-color: var(--primary-color) !important; /* Solid border */
+    }
+    .glitch-text::before, .glitch-text::after {
+        content: none !important; /* Hide pseudo-elements for glitch */
     }
 }
