@@ -438,3 +438,40 @@ input[type="radio"] {
         content: none !important;
     }
 }
+/* In your style.css, somewhere near #step #stepAnswers a */
+#step #stepAnswers .back-button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    margin: 6px 0; /* Consistent with other buttons */
+    background: var(--card-background); /* Use a darker background */
+    color: var(--text-color); /* General text color */
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2); /* Softer shadow */
+    width: 90%; /* Consistent with other buttons */
+    text-align: center;
+    font-size: 0.95rem;
+    text-decoration: none; /* Remove underline for anchor tag */
+}
+
+#step #stepAnswers .back-button:hover {
+    transform: translateY(-2px) scale(1.01); /* Softer hover effect */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    background: rgba(var(--primary-color-rgb), 0.1); /* Slight glow on hover */
+    color: var(--primary-color);
+}
+
+/* And within your @media (min-width: 769px) block for desktop adjustments: */
+@media (min-width: 769px) {
+    /* ... existing styles ... */
+
+    #step #stepAnswers .back-button {
+        width: auto; /* Auto width on desktop */
+        margin: 10px; /* Original desktop margin */
+        padding: 10px 15px; /* Original desktop padding */
+        font-size: 1rem;
+    }
+}
