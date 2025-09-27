@@ -1,68 +1,62 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
- 	<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
- 	<link rel="stylesheet" href="style.css" />
- 	<title>RemoteVm invite link generator</title>
- 	<meta name="viewport" content="width=device-width, initial-scale=1" />
- 	<link rel="icon" type="image/png" href="favicon.png">		
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+    <title>RemoteVm invite link generator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="favicon.png">        
 </head>
 
 <body>
-	<div id="step">
-		<p id="stepNumber">1</p>
-		<h2 id="stepTitle"></h2>
-		<h3 id="stepDescription"></h3>
-		<div id="stepAnswers"></div>
-	</div>
-	<div id="progressAndLink">
-		<div id="progressContainer">
-			<div id="progress">0%</div>
-		</div>
-
-		<div id="link">
-			<div id="finalUrl">https://Live.RemoteVm.ir/</div>
-		</div>
-	</div>
+    <div id="step">
+        <p id="stepNumber">1</p>
+        <h2 id="stepTitle"></h2>
+        <h3 id="stepDescription"></h3>
+        <div id="stepAnswers"></div>
+    </div>
+    <div id="progressAndLink">
+        <div id="progressContainer">
+            <div id="progress">0%</div>
+        </div>
+        <div id="link">
+            <div id="finalUrl">https://Live.RemoteVm.ir/</div>
+        </div>
+    </div>
 </body>
 <script>
-	function makeid(length) {
-		var result = "";
-		var characters =
-			"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-		var charactersLength = characters.length;
-		for (var i = 0; i < length; i++) {
-			result += characters.charAt(Math.floor(Math.random() * charactersLength));
-		}
-		return result;
-	}
+    function makeid(length) {
+        var result = "";
+        var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        var charactersLength = characters.length;
+        for (var i = 0; i < length; i++) {
+            result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+        return result;
+    }
 
-	var randomId = makeid(10);
-
-	var steps;
+    var randomId = makeid(10);
+    var steps;
     var currentStep;
-	var finalUrl = "https://Live.RemoteVm.ir/";
-
-    // --- NEW: History arrays for URL and steps
+    var finalUrl = "https://Live.RemoteVm.ir/";
     var urlHistory = ["https://Live.RemoteVm.ir/"]; // Stores the final URL at each step
     var stepHistory = [0]; // Stores the index of the current step
 
-	let url = "data.json";
+    let url = "data.json";
 
-	fetch(url)
-		.then((res) => res.json())
-		.then((out) => {
-			steps = out;
-			printStep(0);
-		})
-		.catch((err) => {
-			console.error("Error loading data.json:", err); // Improved error handling
-			// alert("خطا در بارگذاری اطلاعات. لطفاً بعداً تلاش کنید."); // User friendly message
-		});
+    fetch(url)
+        .then((res) => res.json())
+        .then((out) => {
+            steps = out;
+            printStep(0);
+        })
+        .catch((err) => {
+            console.error("Error loading data.json:", err);
+            alert("خطا در بارگذاری اطلاعات. لطفاً بعداً تلاش کنید.");
+        });
 
-	function printStep(index) {
-        // --- MODIFIED: Handle final step (URL display)
-		if (index == steps.length) {
+    function printStep(index) {
+        if (index == steps.length) {
             document.getElementById('step').innerHTML = `
                 <h1>لینک شما آماده است!</h1>
                 <a id='outputUrl' href='${finalUrl}' target='_blank'>${finalUrl}</a>
@@ -79,7 +73,6 @@
                     box-shadow: 0 5px 15px rgba(var(--accent-color-rgb), 0.4);
                 ">کپی لینک</button>
             `;
-            // Add click event for copy button
             document.getElementById('copyUrlButton').onclick = function() {
                 navigator.clipboard.writeText(finalUrl).then(() => {
                     this.innerText = "کپی شد!";
@@ -89,36 +82,29 @@
                     alert("خطا در کپی کردن لینک.");
                 });
             };
-			
-			document.getElementById("progress").style.width = "100%";
-			document.getElementById("progress").innerText = "Done!";
- 			document.getElementById("link").outerHTML= ""; // Remove this section from the DOM
+            document.getElementById("progress").style.width = "100%";
+            document.getElementById("progress").innerText = "Done!";
+            document.getElementById("link").outerHTML = "";
+            return;
+        }
 
-            return; // Prevent further execution for the final step
-		}
-
-        // --- NEW: History management
-        // Check if we are moving forward to a new step
         if (index > currentStep && stepHistory[stepHistory.length - 1] !== index) {
             urlHistory.push(finalUrl);
             stepHistory.push(index);
         } else if (index < currentStep) {
-            // If we are moving backward, pop from history
             urlHistory.pop();
             stepHistory.pop();
-            // Restore finalUrl to the previous state
-            finalUrl = urlHistory[urlHistory.length - 1] || "https://Live.RemoteVm.ir/"; 
+            finalUrl = urlHistory[urlHistory.length - 1] || "https://Live.RemoteVm.ir/";
             document.getElementById("finalUrl").innerText = finalUrl;
         }
 
-        currentStep = index; // Update the current step index
-
+        currentStep = index;
         var percentComplete = (index / steps.length) * 100;
-        item = steps[index];
+        var item = steps[index];
 
         document.getElementById("stepTitle").innerText = item.title;
         document.getElementById("stepDescription").innerText = item.description;
-        document.getElementById("stepAnswers").innerHTML = null; // Clear previous answers
+        document.getElementById("stepAnswers").innerHTML = "";
 
         if (index == 0) {
             document.getElementById("progress").style.width = "7%";
@@ -126,52 +112,81 @@
             document.getElementById("progress").style.width = percentComplete + "%";
         }
 
-        document.getElementById("progress").innerText =
-            index + 1 + " / " + Number.parseInt(steps.length + 1);
+        document.getElementById("progress").innerText = index + 1 + " / " + Number.parseInt(steps.length + 1);
 
-        // --- MODIFIED: Create answer buttons and add back button
-		item.answers.forEach(function (answer) {
-			var el;
-			if (answer.type == "button") {
-				el = document.createElement("a");
-				el.setAttribute("data-value", answer.params);
-				el.innerText = answer.label;
-				el.onclick = function () {
-					if (answer.params == "?push=") {
-						answer.params = answer.params + randomId;
-					}
+        item.answers.forEach(function (answer) {
+            var el;
+            if (answer.type == "button") {
+                el = document.createElement("a");
+                el.setAttribute("data-value", answer.params);
+                el.innerText = answer.label;
+                el.onclick = function () {
+                    if (answer.params == "?push=") {
+                        answer.params = answer.params + randomId;
+                    }
+                    finalUrl = finalUrl + answer.params;
+                    document.getElementById("finalUrl").innerText = finalUrl;
+                    document.getElementById("stepNumber").innerText = index + 2;
+                    printStep(index + 1);
+                };
+            } else { // type == "text"
+                var inputContainer = document.createElement("div");
+                inputContainer.style.display = "flex";
+                inputContainer.style.gap = "10px";
+                inputContainer.style.alignItems = "center";
 
-					finalUrl = finalUrl + answer.params;
-					document.getElementById("finalUrl").innerText = finalUrl;
-					document.getElementById("stepNumber").innerText = index + 2;
-					printStep(index + 1);
-				};
-			} else { // type == "text"
-				el = document.createElement("input");
-				el.setAttribute("placeholder", answer.label);
-				el.onkeyup = function (e) {
-					if (e.keyCode == 13) { // Enter key
-						finalUrl = finalUrl + answer.params + el.value;
-						document.getElementById("finalUrl").innerText = finalUrl;
-						document.getElementById("stepNumber").innerText = index + 2;
-						printStep(index + 1);
-					}
-				};
-			}
-			document.getElementById("stepAnswers").appendChild(el);
-		});
+                el = document.createElement("input");
+                el.setAttribute("placeholder", answer.label);
 
-        // --- NEW: Add the back button if not on the first step
+                var confirmButton = document.createElement("button");
+                confirmButton.innerText = "تأیید";
+                confirmButton.style.padding = "8px 16px";
+                confirmButton.style.background = "linear-gradient(95deg, var(--accent-color), var(--primary-color))";
+                confirmButton.style.color = "var(--text-highlight)";
+                confirmButton.style.border = "none";
+                confirmButton.style.borderRadius = "8px";
+                confirmButton.style.cursor = "pointer";
+                confirmButton.style.fontWeight = "bold";
+                confirmButton.style.transition = "all 0.3s ease";
+                confirmButton.style.boxShadow = "0 5px 15px rgba(var(--accent-color-rgb), 0.4)";
+
+                confirmButton.onclick = function () {
+                    if (el.value.trim() !== "") {
+                        finalUrl = finalUrl + answer.params + el.value;
+                        document.getElementById("finalUrl").innerText = finalUrl;
+                        document.getElementById("stepNumber").innerText = index + 2;
+                        printStep(index + 1);
+                    } else {
+                        alert("لطفاً مقدار را وارد کنید!");
+                    }
+                };
+
+                el.onkeyup = function (e) {
+                    if (e.keyCode == 13 && el.value.trim() !== "") {
+                        finalUrl = finalUrl + answer.params + el.value;
+                        document.getElementById("finalUrl").innerText = finalUrl;
+                        document.getElementById("stepNumber").innerText = index + 2;
+                        printStep(index + 1);
+                    }
+                };
+
+                inputContainer.appendChild(el);
+                inputContainer.appendChild(confirmButton);
+                document.getElementById("stepAnswers").appendChild(inputContainer);
+            }
+            document.getElementById("stepAnswers").appendChild(el);
+        });
+
         if (currentStep > 0) {
             var backButton = document.createElement("a");
             backButton.innerText = "بازگشت";
-            backButton.className = "back-button"; // Add a class for styling
+            backButton.className = "back-button";
             backButton.onclick = function() {
-                document.getElementById("stepNumber").innerText = currentStep; // Adjust step number display
-                printStep(currentStep - 1); // Go back to the previous step
+                document.getElementById("stepNumber").innerText = currentStep;
+                printStep(currentStep - 1);
             };
             document.getElementById("stepAnswers").appendChild(backButton);
         }
-	}
+    }
 </script>
 </html>
